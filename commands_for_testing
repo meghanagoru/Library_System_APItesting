@@ -1,0 +1,16 @@
+
+GET:
+curl http://localhost:8080/books
+
+POST:(adding)
+curl -X POST -H "Content-Type: application/json" -d "{\"id\": 1, \"book\": \"New Book\", \"issuedate\": \"2023-11-21\"}" "http://localhost:8080/addBook"
+
+PUT:Update
+curl -X PUT -H "Content-Type: application/json" -d "{\"book\": \"Updated Book\", \"issuedate\": \"2023-11-19\"}" "http://localhost:8080/updateBook/3"
+  # Replace 1 with the actual ID
+
+DELETE:
+curl -X DELETE http://localhost:8080/deleteBook/1  # Replace 1 with the actual ID
+
+To check latency:
+curl -w "DNS time: %{time_namelookup}s\nConnect time: %{time_connect}s\nAppCon time: %{time_appconnect}s\nRedirect time: %{time_redirect}s\nPreXfer time: %{time_pretransfer}s\nStartXfer time: %{time_starttransfer}s\nTotal time: %{time_total}s\n" -o /dev/null -s http://localhost:8080
